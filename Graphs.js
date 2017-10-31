@@ -14,29 +14,27 @@ Graph.prototype.addEdge = function(vertex1, vertex2) {
 };
 
 Graph.prototype.breadthFirstSearch = function(start){
-    // Create an empty queue
     var queue = [start];
     var result = [];
     var visited = {};
-    var currentVertex;
+    var vertex;
 
 
     visited[start] = true;
 
     while (queue.length) {
-       currentVertex = queue.shift();
-       result.push(currentVertex);
+       vertex = queue.shift();
+       result.push(vertex);
 
-       this.adjacencyList[currentVertex].forEach(neighbor => {
-          if (!visited[neighbor]) {
-            visited[neighbor] = true;
-            queue.push(neighbor);
+       this.adjacencyList[vertex].forEach(vert => {
+          if (!visited[vert]) {
+            visited[vert] = true;
+            queue.push(vert);
           }
        });
     }
     return result
 }
-
 
 var graph = new Graph;
 graph.addVertex('S');
