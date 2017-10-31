@@ -36,6 +36,29 @@ Graph.prototype.breadthFirstSearch = function(start){
     return result
 }
 
+
+Graph.prototype.depthFirstSearch = function(start){
+    var stack = [start];
+    var result = [];
+    var visited = {};
+    var vertex;
+
+    visited[start] = true;
+
+    while (stack.length) {
+       vertex = stack.pop();
+       result.push(vertex);
+
+       this.adjacencyList[vertex].forEach(vert => {
+          if (!visited[vert]) {
+            visited[vert] = true;
+            stack.push(vert);
+          }
+       });
+    }
+    return result
+}
+
 var graph = new Graph;
 graph.addVertex('S');
 graph.addVertex('P');
@@ -72,4 +95,8 @@ graph.addEdge('W','T');
 
 console.log(
 graph.breadthFirstSearch('S') // ["S", "P", "U", "X", "Q", "V", "Y", "R", "W", "T"]
+)
+
+console.log(
+graph.depthFirstSearch('S') // ["S", "P", "U", "X", "Q", "V", "Y", "R", "W", "T"]
 )
