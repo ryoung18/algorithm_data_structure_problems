@@ -19,7 +19,6 @@ Graph.prototype.breadthFirstSearch = function(start){
     var visited = {};
     var vertex;
 
-
     visited[start] = true;
 
     while (queue.length) {
