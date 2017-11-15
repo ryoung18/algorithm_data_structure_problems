@@ -25,9 +25,9 @@ function loverLetter (l, n) {
   return true;
 }
 
-console.log(
-loverLetter('i heart u', 'I hate you right now')
-)
+// console.log(
+// loverLetter('i heart u', 'I hate you right now')
+// )
 
 function wordCount(str){
   let freq = {};
@@ -51,4 +51,25 @@ function wordCount(str){
   return freq;
 }
 
-wordCount('Hello! hello hi hi');
+// wordCount('Hello! hello hi hi');
+
+function anagramPair(str1, str2) {
+  let freq = {};
+
+  if(str1.length !== str2.length) return false;
+
+  for(let k in str1){
+    freq[str1[k]] = freq[str1[k]]+1 || 1;
+  }
+
+  for(let k in str2){
+    if(freq[str2[k]] < 0 || !freq[str2[k]]) return false
+    freq[str2[k]]--
+  }
+
+  return true;
+}
+
+// console.log(
+// anagramPair("racecar", "crarace")
+// )
