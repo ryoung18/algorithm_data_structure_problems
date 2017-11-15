@@ -73,3 +73,19 @@ function anagramPair(str1, str2) {
 // console.log(
 // anagramPair("racecar", "crarace")
 // )
+
+function anagramPalindrome(str) {
+  let freq = {};
+  let oddCount = 0;
+
+  for(let k in str){
+    freq[str[k]] = freq[str[k]]+1 || 1;
+  }
+
+  for(let k in freq) {
+    if(freq[k] % 2 === 1) oddCount++
+    if(oddCount > 1) return false;
+  }
+
+  return true;
+}
