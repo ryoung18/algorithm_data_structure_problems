@@ -89,3 +89,54 @@ function anagramPalindrome(str) {
 
   return true;
 }
+
+function letterSort(str) {
+  let freq = {};
+  let result = '';
+  let min = 0;
+  let max = 0;
+
+  for(let k in str) {
+    freq[str[k]] = ++freq[str[k]] || 1;
+    min = Math.min(str[k].charCodeAt(0), min)
+    max = Math.max(str[k].charCodeAt(0), max)
+  }
+
+  for(let i = min; i <= max; i++){
+    let letter = String.fromCharCode(i);
+    if(freq[letter])
+      result = result + letter.repeat(freq[letter]);
+  }
+
+  return result;
+}
+
+
+// console.log(
+// letterSort('one')
+// )
+
+function sortDigits(int) {
+  let numCount = [];
+  let result = 0;
+
+  if(typeof int !== 'number' ) return false;
+
+  while(int > 0){
+    numCount[int % 10] = ++numCount[int % 10] || 1;
+    int = Math.floor(int/10)
+  }
+
+  for(let i = 1; i < numCount.length; i++){
+    if(numCount[i]){
+      for(let j = 0; j < numCount[i]; j++ ) {
+        result = result*10+i;
+      }
+    }
+  }
+  return result;
+}
+
+console.log(
+sortDigits(12344+'8')
+)
